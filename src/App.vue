@@ -22,5 +22,5 @@ export default {
 
 <style lang="scss">
 @use 'bootstrap/scss/bootstrap.scss';
-@use "./styles/general.scss";
+@use "./styles/general.scss" as *;
 </style>
