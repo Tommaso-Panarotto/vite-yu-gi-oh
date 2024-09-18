@@ -1,11 +1,12 @@
 <script>
 import SetListCard from "./SetListCard.vue";
 import axios from 'axios';
+import { store } from "../store.js";
 
 export default {
     data() {
         return {
-            cardItems: [],
+            store,
             APIUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0"
         }
     },
@@ -16,12 +17,7 @@ export default {
         getCards() {
             axios.get(this.APIUrl)
                 .then((response) => {
-                    this.cardItems = response.data.data;
-                    console.table(this.cardItems);
-                    console.log(response.data.data);
-                    console.log(response.data.data[0].card_images[0].image_url);
-                    console.log(response.data.data[0].name);
-                    console.log(response.data.data[0].race);
+                    this.store.cardItems = response.data.data;
                 }
                 )
         }
@@ -34,7 +30,7 @@ export default {
 
 <template>
     <div class="row ">
-        <SetListCard v-for="card in cardItems" :key="card.id" :cardObj="card" />
+        <SetListCard v-for="card in store.cardItems" :key="card.id" :cardObj="card" />
     </div>
 </template>
 
