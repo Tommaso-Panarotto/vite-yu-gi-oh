@@ -18,9 +18,17 @@ export default {
 </script>
 
 <template>
-    <CardsCounter />
-    <SetList />
-    <SetListCard />
+    <main class="container">
+        <CardsCounter />
+        <SetList />
+        <SetListCard />
+    </main>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main {
+    background-color: white;
+    margin-top: 50px;
+    padding: 30px;
+}
+</style>
