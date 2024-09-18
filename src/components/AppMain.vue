@@ -1,7 +1,6 @@
 <script>
 import CardsCounter from "./CardsCounter.vue";
 import SetList from "./SetList.vue";
-import SetListCard from "./SetListCard.vue";
 
 export default {
     data() {
@@ -11,8 +10,7 @@ export default {
     },
     components: {
         CardsCounter,
-        SetList,
-        SetListCard
+        SetList
     }
 }
 </script>
@@ -21,7 +19,6 @@ export default {
     <main class="container">
         <CardsCounter />
         <SetList />
-        <SetListCard />
     </main>
 </template>
 
