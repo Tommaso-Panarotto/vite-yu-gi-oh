@@ -17,7 +17,8 @@ export default {
             axios.get(this.APIUrl)
                 .then((response) => {
                     this.cardItems = response.data.data;
-                    console.log(this.cardItems);
+                    console.table(this.cardItems);
+                    console.log(response.data.data);
                     console.log(response.data.data[0].card_images[0].image_url);
                     console.log(response.data.data[0].name);
                     console.log(response.data.data[0].race);
@@ -33,9 +34,7 @@ export default {
 
 <template>
     <div class="row ">
-        <div class="col-3 gy-3" v-for="card in cardItems">
-            <SetListCard />
-        </div>
+        <SetListCard v-for="card in cardItems" :key="card.id" :cardObj="card" />
     </div>
 </template>
 
