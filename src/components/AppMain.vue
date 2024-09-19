@@ -22,21 +22,21 @@ export default {
             axios.get(this.APIUrl)
                 .then((response) => {
                     this.cardItems = response.data.data;
-                }
-                )
+                })
+                .finally(() => {
+                    this.loading = false
+                })
         }
     },
-    mounted() {
-        this.getCards();
+    created() {
+        setTimeout(this.getCards, 2000);
     }
 }
 </script>
 
 <template>
-    <div class="container">
-        <LoaderMain />
-    </div>
-    <main class="container">
+    <LoaderMain v-if="loading" />
+    <main class="container" v-else>
         <CardsCounter :cardListStaf="cardItems" />
         <SetList :cardListStaf="cardItems" />
     </main>

@@ -10,19 +10,21 @@ export default {
 </script>
 
 <template>
-    <span class="loader"></span>
+    <main class="container">
+        <span class="loader"></span>
+    </main>
 </template>
 
 <style lang="scss" scoped>
 .loader {
     width: 60px;
     height: 40px;
-    position: relative;
+    position: absolute;
     display: inline-block;
     --base-color: white;
-    position: relative;
-    top: 50%;
     bottom: 50%;
+    right: 50%;
+    translate: transform(-50%, -50%);
     /*use your base color*/
 }
 
@@ -64,5 +66,9 @@ export default {
     100% {
         transform: rotate(-360deg);
     }
+}
+
+main {
+    position: relative;
 }
 </style>
