@@ -17,7 +17,8 @@ export default {
                 })
         },
         getArchetypeName(result) {
-            console.log(result)
+            console.log(result);
+            this.$emit("select", result)
         }
     },
     created() {

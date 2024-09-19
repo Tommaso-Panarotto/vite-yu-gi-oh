@@ -28,6 +28,9 @@ export default {
                 .finally(() => {
                     this.loading = false
                 })
+        },
+        selectArchetype(message) {
+            console.log(message);
         }
     },
     created() {
@@ -37,7 +40,7 @@ export default {
 </script>
 
 <template>
-    <CardsArchetypesSelect />
+    <CardsArchetypesSelect @select="selectArchetype" />
     <LoaderMain v-if="loading" />
     <main class="container" v-else>
         <CardsCounter :cardListStaf="cardItems" />
