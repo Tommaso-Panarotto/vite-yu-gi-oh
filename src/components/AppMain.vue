@@ -2,28 +2,43 @@
 import CardsCounter from "./CardsCounter.vue";
 import SetList from "./SetList.vue";
 import LoaderMain from "./LoaderMain.vue";
+import axios from 'axios';
 
 export default {
     data() {
         return {
+            APIUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=37&offset=0",
             loading: true,
+            cardItems: []
         }
     },
     components: {
         CardsCounter,
         SetList,
         LoaderMain
+    },
+    methods: {
+        getCards() {
+            axios.get(this.APIUrl)
+                .then((response) => {
+                    this.cardItems = response.data.data;
+                }
+                )
+        }
+    },
+    mounted() {
+        this.getCards();
     }
 }
 </script>
 
 <template>
-    <main class="container">
+    <div class="container">
         <LoaderMain />
-    </main>
+    </div>
     <main class="container">
-        <CardsCounter />
-        <SetList />
+        <CardsCounter :cardListStaf="cardItems" />
+        <SetList :cardListStaf="cardItems" />
     </main>
 </template>
 

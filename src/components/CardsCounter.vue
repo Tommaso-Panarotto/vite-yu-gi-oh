@@ -1,17 +1,23 @@
 <script>
-import { store } from "../store.js";
+
 
 export default {
     data() {
         return {
-            store
+
+        }
+    },
+    props: {
+        cardListStaf: {
+            type: Array,
+            required: true,
         }
     }
 }
 </script>
 
 <template>
-    <div class="counter px-3">Found {{ store.cardItems.length }} cards</div>
+    <div class="counter px-3">Found {{ cardListStaf.length }} cards</div>
 </template>
 
 <style lang="scss" scoped>
