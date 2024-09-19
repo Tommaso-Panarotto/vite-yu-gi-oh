@@ -6,7 +6,7 @@ export default {
         return {
             APIUrl: "https://db.ygoprodeck.com/api/v7/archetypes.php",
             archetypesList: [],
-            archetypeName: "",
+            archetypeName: "Blue-Eyes",
         }
     },
     methods: {
@@ -31,7 +31,6 @@ export default {
     <div class="select container mt-5">
         <select class="form-select" aria-label="Default select example" v-model="archetypeName"
             @click="getArchetypeName(archetypeName)">
-            <option selected>Select a Archetypes</option>
             <option :value="archetype.archetype_name" v-for="archetype of archetypesList">{{
                 archetype.archetype_name }}
             </option>

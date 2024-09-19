@@ -8,7 +8,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            APIUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=37&offset=0",
+            APIUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php?",
             loading: true,
             cardItems: []
         }
@@ -20,8 +20,12 @@ export default {
         CardsArchetypesSelect
     },
     methods: {
-        getCards() {
-            axios.get(this.APIUrl)
+        getCards(query = "Blue-Eyes") {
+            axios.get(this.APIUrl, {
+                params: {
+                    archetype: query
+                }
+            })
                 .then((response) => {
                     this.cardItems = response.data.data;
                 })
@@ -31,6 +35,7 @@ export default {
         },
         selectArchetype(message) {
             console.log(message);
+            this.getCards(message);
         }
     },
     created() {
