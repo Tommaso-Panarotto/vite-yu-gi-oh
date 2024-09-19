@@ -2,6 +2,7 @@
 import CardsCounter from "./CardsCounter.vue";
 import SetList from "./SetList.vue";
 import LoaderMain from "./LoaderMain.vue";
+import CardsArchetypesSelect from "./CardsArchetypesSelect.vue";
 import axios from 'axios';
 
 export default {
@@ -15,7 +16,8 @@ export default {
     components: {
         CardsCounter,
         SetList,
-        LoaderMain
+        LoaderMain,
+        CardsArchetypesSelect
     },
     methods: {
         getCards() {
@@ -35,6 +37,7 @@ export default {
 </script>
 
 <template>
+    <CardsArchetypesSelect />
     <LoaderMain v-if="loading" />
     <main class="container" v-else>
         <CardsCounter :cardListStaf="cardItems" />
